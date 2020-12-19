@@ -7,7 +7,7 @@ This container runs restic backups in regular intervals.
 * Support for different targets (tested with: Local, NFS, SFTP, AWS)
 * Support `restic mount` inside the container to browse the backup files
 
-**Container**: [lobaro/restic-backup-docker](https://hub.docker.com/r/lobaro/restic-backup-docker/)
+**Container**: [higmanschmidt/restic-backup-docker](https://hub.docker.com/r/higmanschmidt/restic-backup-docker/)
 
 Stable
 ```
