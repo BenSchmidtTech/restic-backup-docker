@@ -17,7 +17,8 @@ COPY --from=rclone /bin/rclone /bin/rclone
 
 RUN \
     mkdir -p /mnt/restic /var/spool/cron/crontabs /var/log /var/restic/cache /var/restic/hooks; \
-    touch /var/log/cron.log;
+    touch /var/log/cron.log; \
+    ln -s /var/restic/hooks /hooks;
 
 ENV RESTIC_REPOSITORY=/mnt/restic
 ENV RESTIC_CACHE_DIR=/var/restic/cache
