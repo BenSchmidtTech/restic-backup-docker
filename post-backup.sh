@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 title="Restic Backup Report"
 body="$(cat /var/log/backup-last.log)"
