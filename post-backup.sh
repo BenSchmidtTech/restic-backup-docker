@@ -10,5 +10,5 @@ json=$( jq -n \
 
 contentType="Content-Type: application/json"
 
-curl -X POST -d "$json" -H $contentType "$APPRISEURL"
+curl -X POST -d "$json" -H "$contentType" "$APPRISEURL"
 
