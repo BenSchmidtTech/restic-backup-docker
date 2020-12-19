@@ -16,10 +16,11 @@ RUN apk add --update --no-cache curl jq
 COPY --from=rclone /bin/rclone /bin/rclone
 
 RUN \
-    mkdir -p /mnt/restic /var/spool/cron/crontabs /var/log; \
+    mkdir -p /mnt/restic /var/spool/cron/crontabs /var/log /var/restic/cache /var/restic/hooks; \
     touch /var/log/cron.log;
 
 ENV RESTIC_REPOSITORY=/mnt/restic
+ENV RESTIC_CACHE_DIR=/var/restic/cache
 ENV RESTIC_PASSWORD=""
 ENV RESTIC_TAG=""
 ENV NFS_TARGET=""
@@ -41,15 +42,15 @@ ENV OS_INTERFACE=""
 ENV OS_IDENTITY_API_VERSION=3
 
 # openshift fix
-RUN mkdir /.cache && \
-    chgrp -R 0 /.cache && \
-    chmod -R g=u /.cache && \
-    chgrp -R 0 /mnt && \
-    chmod -R g=u /mnt && \
-    chgrp -R 0 /var/spool/cron/crontabs/root && \
-    chmod -R g=u /var/spool/cron/crontabs/root && \
-    chgrp -R 0 /var/log/cron.log && \
-    chmod -R g=u /var/log/cron.log
+#RUN mkdir /.cache && \
+#    chgrp -R 0 /.cache && \
+#    chmod -R g=u /.cache && \
+#    chgrp -R 0 /mnt && \
+#    chmod -R g=u /mnt && \
+#    chgrp -R 0 /var/spool/cron/crontabs/root && \
+#    chmod -R g=u /var/spool/cron/crontabs/root && \
+#    chgrp -R 0 /var/log/cron.log && \
+#    chmod -R g=u /var/log/cron.log
 
 # /data is the dir where you have to put the data to be backed up
 VOLUME /data
