@@ -8,8 +8,8 @@ FROM restic/restic:0.11.0
 
 RUN apk add --update --no-cache heirloom-mailx fuse curl
 
-# install curl and jq
-RUN apk add --update --no-cache curl jq
+# install jq
+RUN apk add --update --no-cache jq
 
 
 COPY --from=rclone /bin/rclone /bin/rclone
